@@ -6,6 +6,11 @@ PlayerBehavior::~PlayerBehavior()
     {
         delete playerPoint;
     }
+
+    if (camera)
+    {
+        delete camera;
+    }
 }
 
 void PlayerBehavior::start()
@@ -17,6 +22,9 @@ void PlayerBehavior::start()
     playerPoint->setFillColor(sf::Color::Green);
     playerPoint->setPosition(windowSize.x / 2, windowSize.y / 2);
     playerPoint->setOrigin(radius, radius);
+
+    camera = new Camera();
+
     prevMousePosition = sf::Mouse::getPosition(*ElementContainer::get().getRenderWindow());
 }
 
@@ -25,12 +33,11 @@ void PlayerBehavior::update()
     playerMovement();
     mouseMovement();
 
-    sf::Vector2f startPoint(
-        playerPoint->getPosition().x,
-        playerPoint->getPosition().y
-    );
+    // Bind player and camera
+    camera->getTransform()->setPosition(playerPoint->getPosition());
+    camera->getTransform()->setRotateAngle(playerPoint->getRotation());
 
-    auto rayCastHit = RayCast::cast(playerPoint->getRotation(), startPoint);
+    camera->update();
 
     ElementContainer::get().getRenderWindow()->draw(*playerPoint);
 }

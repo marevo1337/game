@@ -34,6 +34,10 @@ add_executable(CMakeSFMLProject
         src/Physics/RayCast/RayCast.hpp
         src/ElementContainer.cpp
         src/ElementContainer.hpp
+        src/Component/Camera.cpp
+        src/Component/Camera.hpp
+        src/Component/Transform.cpp
+        src/Component/Transform.hpp
 )
 target_link_libraries(CMakeSFMLProject PRIVATE sfml-graphics)
 target_compile_features(CMakeSFMLProject PRIVATE cxx_std_17)

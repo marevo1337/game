@@ -1,11 +1,14 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "Transform.hpp"
 
 class BaseComponent
 {
 private:
     bool enable = true;
+protected:
+    Transform transform;
 public:
     virtual ~BaseComponent() {};
 
@@ -14,4 +17,6 @@ public:
 
     virtual void start() = 0;
     virtual void update() = 0;
+
+    Transform* getTransform();
 };

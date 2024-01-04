@@ -5,8 +5,6 @@ void Camera::start()
 
 void Camera::update()
 {
-    std::cout << getTransform()->getPosition().x << std::endl;
-
     float currentAngleOffset = startAngleOffset;
     for (int i = 0; i < fov; i++)
     {
@@ -16,9 +14,4 @@ void Camera::update()
         );
         currentAngleOffset += fovDelta;
     }
-}
-
-Transform* Camera::getTransform()
-{
-    return &transform;
 }

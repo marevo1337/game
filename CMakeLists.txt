@@ -38,6 +38,8 @@ add_executable(CMakeSFMLProject
         src/Component/Camera.hpp
         src/Component/Transform.cpp
         src/Component/Transform.hpp
+        src/SceneBuilder/TestScene/Behavior/Cube.cpp
+        src/SceneBuilder/TestScene/Behavior/Cube.hpp
 )
 target_link_libraries(CMakeSFMLProject PRIVATE sfml-graphics)
 target_compile_features(CMakeSFMLProject PRIVATE cxx_std_17)

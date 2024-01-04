@@ -28,6 +28,12 @@ add_executable(CMakeSFMLProject
         src/SceneBuilder/TestScene/TestSceneBuilder.hpp
         src/SceneBuilder/TestScene/Behavior/PlayerBehavior.cpp
         src/SceneBuilder/TestScene/Behavior/PlayerBehavior.hpp
+        src/Physics/RayCast/RayCastHit.cpp
+        src/Physics/RayCast/RayCastHit.hpp
+        src/Physics/RayCast/RayCast.cpp
+        src/Physics/RayCast/RayCast.hpp
+        src/ElementContainer.cpp
+        src/ElementContainer.hpp
 )
 target_link_libraries(CMakeSFMLProject PRIVATE sfml-graphics)
 target_compile_features(CMakeSFMLProject PRIVATE cxx_std_17)

@@ -2,20 +2,19 @@
 
 Application::Application()
 {
-    renderWindow = new sf::RenderWindow( { 800u, 600u }, "Game" );
+    sf::RenderWindow* renderWindow = new sf::RenderWindow( { 1440u, 900u }, "Game" );
     renderWindow->setFramerateLimit(60u);
+
+    ElementContainer::get().setRenderWindow(renderWindow);
 }
 
 Application::~Application()
 {
-    if (renderWindow)
-    {
-        delete renderWindow;
-    }
+    ElementContainer::get().free();
 }
 
 void Application::run()
 {
     GameLoop gameLoop;
-    gameLoop.run(renderWindow);
+    gameLoop.run();
 }

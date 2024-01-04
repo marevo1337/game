@@ -1,36 +1,28 @@
 #include "GameLoop.hpp"
 
-GameLoop::GameLoop()
+void GameLoop::run()
 {
-    sceneController = new SceneController();
-}
+    ElementContainer::get().setSceneController(new SceneController());
+    ElementContainer::get()
+        .getSceneController()
+        ->switchScene(TestSceneBuilder::build());
 
-GameLoop::~GameLoop()
-{
-    if (sceneController)
-    {
-        delete sceneController;
-    }
-}
+    ElementContainer::get().getRenderWindow()->setMouseCursorVisible(false);
 
-void GameLoop::run(sf::RenderWindow* targetRenderWindow)
-{
-    sceneController->switchScene(TestSceneBuilder::build(), targetRenderWindow);
-
-    while (targetRenderWindow->isOpen())
+    while (ElementContainer::get().getRenderWindow()->isOpen())
     {
         sf::Event event;
-        while (targetRenderWindow->pollEvent(event))
+        while (ElementContainer::get().getRenderWindow()->pollEvent(event))
         {
             // TODO: This code segments need to refactoring to "EventSystem"
             if (event.type == sf::Event::Closed)
             {
-                targetRenderWindow->close();
+                ElementContainer::get().getRenderWindow()->close();
             }
         }
 
-        targetRenderWindow->clear();
-        sceneController->update(targetRenderWindow);
-        targetRenderWindow->display();
+        ElementContainer::get().getRenderWindow()->clear();
+        ElementContainer::get().getSceneController()->update();
+        ElementContainer::get().getRenderWindow()->display();
     }
 }

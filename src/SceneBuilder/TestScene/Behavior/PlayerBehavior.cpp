@@ -8,36 +8,79 @@ PlayerBehavior::~PlayerBehavior()
     }
 }
 
-void PlayerBehavior::start(sf::RenderWindow *renderWindow)
+void PlayerBehavior::start()
 {
-    auto windowSize = renderWindow->getSize();
+    float radius = 5.0f;
+    auto windowSize = ElementContainer::get().getRenderWindow()->getSize();
 
-    playerPoint = new sf::CircleShape(5);
+    playerPoint = new sf::CircleShape(radius);
     playerPoint->setFillColor(sf::Color::Green);
     playerPoint->setPosition(windowSize.x / 2, windowSize.y / 2);
+    playerPoint->setOrigin(radius, radius);
+    prevMousePosition = sf::Mouse::getPosition(*ElementContainer::get().getRenderWindow());
 }
 
-void PlayerBehavior::update(sf::RenderWindow* renderWindow)
+void PlayerBehavior::update()
+{
+    playerMovement();
+    mouseMovement();
+
+    sf::Vector2f startPoint(
+        playerPoint->getPosition().x,
+        playerPoint->getPosition().y
+    );
+
+    auto rayCastHit = RayCast::cast(playerPoint->getRotation(), startPoint);
+
+    ElementContainer::get().getRenderWindow()->draw(*playerPoint);
+}
+
+void PlayerBehavior::playerMovement()
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
-        playerPoint->move(-1 * speed, 0);
+        playerPoint->move(-speed, 0);
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
-        playerPoint->move(1 * speed, 0);
-    }
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-    {
-        playerPoint->move(0, -1 * speed);
+        playerPoint->move(speed, 0);
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     {
-        playerPoint->move(0, 1 * speed);
+        playerPoint->move(0, speed);
     }
 
-    renderWindow->draw(*playerPoint);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+    {
+        float x = speed * sin(playerPoint->getRotation());
+        float y = speed * cos(playerPoint->getRotation());
+
+        playerPoint->move(x, y);
+    }
+}
+
+void PlayerBehavior::mouseMovement()
+{
+    sf::Vector2i localPosition = sf::Mouse::getPosition(*ElementContainer::get().getRenderWindow());
+    if (
+        prevMousePosition.x == localPosition.x &&
+        prevMousePosition.y == localPosition.y
+    )
+    {
+        return;
+    }
+
+    if (prevMousePosition.x < localPosition.x)
+    {
+        playerPoint->rotate(-mouseSensitive);
+    }
+
+    if (prevMousePosition.x > localPosition.x)
+    {
+        playerPoint->rotate(mouseSensitive);
+    }
+
+    prevMousePosition = localPosition;
 }

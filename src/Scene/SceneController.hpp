@@ -10,6 +10,8 @@ private:
 public:
     virtual ~SceneController();
 
-    void switchScene(Scene* next, sf::RenderWindow* renderWindow);
-    void update(sf::RenderWindow* renderWindow);
+    Scene* getCurrentScene();
+
+    void switchScene(Scene* next);
+    void update();
 };

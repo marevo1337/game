@@ -8,7 +8,7 @@ SceneController::~SceneController()
     }
 }
 
-void SceneController::switchScene(Scene *next, sf::RenderWindow* renderWindow)
+void SceneController::switchScene(Scene *next)
 {
     if (currentScene)
     {
@@ -21,12 +21,12 @@ void SceneController::switchScene(Scene *next, sf::RenderWindow* renderWindow)
     {
         for (auto component : gameObject->getComponents())
         {
-            component->start(renderWindow);
+            component->start();
         }
     }
 }
 
-void SceneController::update(sf::RenderWindow* renderWindow)
+void SceneController::update()
 {
     for (auto gameObject : currentScene->getGameObjects())
     {
@@ -34,8 +34,13 @@ void SceneController::update(sf::RenderWindow* renderWindow)
         {
             if (component->isEnable())
             {
-                component->update(renderWindow);
+                component->update();
             }
         }
     }
+}
+
+Scene *SceneController::getCurrentScene()
+{
+    return currentScene;
 }

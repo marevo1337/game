@@ -12,6 +12,6 @@ public:
     bool isEnable();
     void setEnable(bool enable);
 
-    virtual void start(sf::RenderWindow* renderWindow) = 0;
-    virtual void update(sf::RenderWindow* renderWindow) = 0;
+    virtual void start() = 0;
+    virtual void update() = 0;
 };

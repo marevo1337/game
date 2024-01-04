@@ -6,7 +6,7 @@ Scene *TestSceneBuilder::build()
 
     // Player
     GameObject* player = new GameObject();
-    player->attachComponent(new PlayerBehavior());
+    player->attachComponent("PlayerBehavior", new PlayerBehavior());
     scene->attachGameObject(player);
 
     // Cube
@@ -14,7 +14,7 @@ Scene *TestSceneBuilder::build()
     Transform cubeTransform;
     cubeTransform.setPosition(sf::Vector2f(400.0f, 300.0f));
     cubeTransform.setRotateAngle(0);
-    cube->attachComponent(new Cube(30.0f, cubeTransform));
+    cube->attachComponent("Cube", new Cube(30.0f, cubeTransform));
     scene->attachGameObject(cube);
 
     return scene;

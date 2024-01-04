@@ -3,21 +3,21 @@
 GameObject::~GameObject() {
     for (auto component : components)
     {
-        if (component)
+        if (component.second)
         {
-            delete component;
+            delete component.second;
         }
     }
 }
 
-GameObject* GameObject::attachComponent(BaseComponent *component)
+GameObject* GameObject::attachComponent(const std::string tag, BaseComponent *component)
 {
-    components.push_back(component);
+    components[tag] = component;
 
     return this;
 }
 
-std::vector<BaseComponent*> GameObject::getComponents()
+std::map<std::string, BaseComponent*> GameObject::getComponents()
 {
     return components;
 }

@@ -1,15 +1,15 @@
 #pragma once
 
-#include <vector>
+#include <map>
 #include "../Component/BaseComponent.hpp"
 
 class GameObject
 {
 private:
-    std::vector<BaseComponent*> components;
+    std::map<std::string, BaseComponent*> components;
 public:
     virtual ~GameObject();
 
-    GameObject* attachComponent(BaseComponent* component);
-    std::vector<BaseComponent*> getComponents();
+    GameObject* attachComponent(const std::string tag, BaseComponent* component);
+    std::map<std::string, BaseComponent*> getComponents();
 };

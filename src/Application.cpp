@@ -6,6 +6,7 @@ Application::Application()
     renderWindow->setFramerateLimit(60u);
 
     ElementContainer::get().setRenderWindow(renderWindow);
+    ElementContainer::get().setCamera(new Camera());
 }
 
 Application::~Application()

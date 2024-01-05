@@ -1,7 +1,8 @@
 #include "GameObject.hpp"
 
-GameObject::~GameObject() {
-    for (auto component : components)
+GameObject::~GameObject()
+{
+    for (auto component : componentsTable)
     {
         if (component.second)
         {
@@ -10,14 +11,17 @@ GameObject::~GameObject() {
     }
 }
 
-GameObject* GameObject::attachComponent(const std::string tag, BaseComponent *component)
+void GameObject::registerComponent(const std::string& tag, BaseComponent* component)
 {
-    components[tag] = component;
-
-    return this;
+    componentsTable[tag] = component;
 }
 
-std::map<std::string, BaseComponent*> GameObject::getComponents()
+BaseComponent* GameObject::findComponentByTag(const std::string& tag)
 {
-    return components;
+    if (componentsTable.find(tag) == componentsTable.end())
+    {
+        return nullptr;
+    }
+
+    return componentsTable[tag];
 }

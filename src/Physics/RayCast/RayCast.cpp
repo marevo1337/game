@@ -11,28 +11,32 @@ RayCastHit RayCast::cast(
         ->getCurrentScene()
         ->getGameObjects();
 
-    sf::Vector2f endPosition;
     for (int i = 1; i <= distance; i++)
     {
+        sf::Vector2f endPosition;
         endPosition.x = startPoint.x + i * sin(angle);
         endPosition.y = startPoint.y + i * cos(angle);
 
+        sf::Vertex line[] =
+        {
+            sf::Vertex(startPoint),
+            sf::Vertex(endPosition)
+        };
+        ElementContainer::get().getRenderWindow()->draw(line, 2, sf::Lines);
+
         for (auto gameObject : gameObjects)
         {
-
+            BaseComponent* component = gameObject->findComponentByTag(Tag::Collider);
+            if (component != nullptr)
+            {
+                Collider* collider = dynamic_cast<Collider*>(component);
+                if(Collision::detect(*collider, endPosition))
+                {
+                    // ...
+                }
+            }
         }
     }
 
-    endPosition.x = startPoint.x + distance * sin(angle);
-    endPosition.y = startPoint.y + distance * cos(angle);
-
-    sf::Vertex line[] =
-    {
-        sf::Vertex(sf::Vector2f(startPoint.x, startPoint.y)),
-        sf::Vertex(endPosition)
-    };
-
-    ElementContainer::get().getRenderWindow()->draw(line, 2, sf::Lines);
-
-    return RayCastHit(0, nullptr);
+    return RayCastHit(distance, nullptr);
 }

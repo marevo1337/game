@@ -1,19 +1,14 @@
-#include "PlayerBehavior.hpp"
+#include "Player.hpp"
 
-PlayerBehavior::~PlayerBehavior()
+Player::~Player()
 {
     if (playerPoint)
     {
         delete playerPoint;
     }
-
-    if (camera)
-    {
-        delete camera;
-    }
 }
 
-void PlayerBehavior::start()
+void Player::start()
 {
     float radius = 5.0f;
     auto windowSize = ElementContainer::get().getRenderWindow()->getSize();
@@ -23,26 +18,19 @@ void PlayerBehavior::start()
     playerPoint->setPosition(windowSize.x / 2, windowSize.y / 2);
     playerPoint->setOrigin(radius, radius);
 
-    camera = new Camera();
-
     prevMousePosition = sf::Mouse::getPosition(*ElementContainer::get().getRenderWindow());
 }
 
-void PlayerBehavior::update()
+void Player::update()
 {
     playerMovement();
     mouseMovement();
 
-    // Bind player and camera
-    camera->getTransform()->setPosition(playerPoint->getPosition());
-    camera->getTransform()->setRotateAngle(playerPoint->getRotation());
-
-    camera->update();
-
+    ElementContainer::get().getCamera()->look(getPosition(), getRotateAngle());
     ElementContainer::get().getRenderWindow()->draw(*playerPoint);
 }
 
-void PlayerBehavior::playerMovement()
+void Player::playerMovement()
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
@@ -68,7 +56,7 @@ void PlayerBehavior::playerMovement()
     }
 }
 
-void PlayerBehavior::mouseMovement()
+void Player::mouseMovement()
 {
     sf::Vector2i localPosition = sf::Mouse::getPosition(*ElementContainer::get().getRenderWindow());
     if (
@@ -90,4 +78,14 @@ void PlayerBehavior::mouseMovement()
     }
 
     prevMousePosition = localPosition;
+}
+
+sf::Vector2f Player::getPosition()
+{
+    return playerPoint->getPosition();
+}
+
+float Player::getRotateAngle()
+{
+    return playerPoint->getRotation();
 }

@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "GameLoop.hpp"
 #include "ElementContainer.hpp"
+#include "Camera/Camera.hpp"
 
 class Application
 {

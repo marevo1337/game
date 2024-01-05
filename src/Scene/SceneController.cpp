@@ -19,10 +19,7 @@ void SceneController::switchScene(Scene *next)
 
     for (auto gameObject : currentScene->getGameObjects())
     {
-        for (auto component : gameObject->getComponents())
-        {
-            component.second->start();
-        }
+        gameObject->start();
     }
 }
 
@@ -30,13 +27,7 @@ void SceneController::update()
 {
     for (auto gameObject : currentScene->getGameObjects())
     {
-        for (auto component : gameObject->getComponents())
-        {
-            if (component.second->isEnable())
-            {
-                component.second->update();
-            }
-        }
+        gameObject->update();
     }
 }
 

@@ -26,20 +26,23 @@ add_executable(CMakeSFMLProject
         src/Scene/SceneController.hpp
         src/SceneBuilder/TestScene/TestSceneBuilder.cpp
         src/SceneBuilder/TestScene/TestSceneBuilder.hpp
-        src/SceneBuilder/TestScene/Behavior/PlayerBehavior.cpp
-        src/SceneBuilder/TestScene/Behavior/PlayerBehavior.hpp
+        src/SceneBuilder/TestScene/GameObject/Player.cpp
+        src/SceneBuilder/TestScene/GameObject/Player.hpp
         src/Physics/RayCast/RayCastHit.cpp
         src/Physics/RayCast/RayCastHit.hpp
         src/Physics/RayCast/RayCast.cpp
         src/Physics/RayCast/RayCast.hpp
         src/ElementContainer.cpp
         src/ElementContainer.hpp
-        src/Component/Camera.cpp
-        src/Component/Camera.hpp
-        src/Component/Transform.cpp
-        src/Component/Transform.hpp
-        src/SceneBuilder/TestScene/Behavior/Cube.cpp
-        src/SceneBuilder/TestScene/Behavior/Cube.hpp
+        src/Camera/Camera.cpp
+        src/Camera/Camera.hpp
+        src/SceneBuilder/TestScene/GameObject/Cube.cpp
+        src/SceneBuilder/TestScene/GameObject/Cube.hpp
+        src/Component/Tag.hpp
+        src/Physics/Collision/Collision.cpp
+        src/Physics/Collision/Collision.hpp
+        src/Component/Collider.cpp
+        src/Component/Collider.hpp
 )
 target_link_libraries(CMakeSFMLProject PRIVATE sfml-graphics)
 target_compile_features(CMakeSFMLProject PRIVATE cxx_std_17)

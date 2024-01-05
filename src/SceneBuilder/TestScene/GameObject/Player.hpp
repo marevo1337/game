@@ -1,12 +1,12 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "../../../Component/BaseComponent.hpp"
+#include "../../../GameObject/GameObject.hpp"
 #include "../../../ElementContainer.hpp"
 #include "../../../Physics/RayCast/RayCast.hpp"
-#include "../../../Component/Camera.hpp"
+#include "../../../Camera/Camera.hpp"
 
-class PlayerBehavior : public BaseComponent
+class Player : public GameObject
 {
 private:
     const float speed = 3.0f;
@@ -21,8 +21,11 @@ private:
     void playerMovement();
     void mouseMovement();
 public:
-    virtual ~PlayerBehavior();
+    virtual ~Player();
 
     void start() override;
     void update() override;
+
+    sf::Vector2f getPosition() override;
+    float getRotateAngle() override;
 };

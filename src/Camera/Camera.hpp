@@ -1,10 +1,9 @@
 #pragma once
 
-#include "BaseComponent.hpp"
-#include "Transform.hpp"
+#include <SFML/Graphics.hpp>
 #include "../Physics/RayCast/RayCast.hpp"
 
-class Camera : public BaseComponent
+class Camera
 {
 private:
     int fov = 20;
@@ -13,6 +12,5 @@ private:
 public:
     virtual ~Camera() {};
 
-    void start() override;
-    void update() override;
+    void look(const sf::Vector2f position, float rotateAngle);
 };

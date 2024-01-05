@@ -2,12 +2,16 @@
 
 #include <SFML/Graphics.hpp>
 #include "Scene/SceneController.hpp"
+#include "Camera/Camera.hpp"
+
+class Camera;
 
 class ElementContainer
 {
 private:
     SceneController* sceneController = nullptr;
     sf::RenderWindow* renderWindow = nullptr;
+    Camera* camera = nullptr;
 
     ElementContainer() {};
     ~ElementContainer() {};
@@ -26,6 +30,9 @@ public:
 
     sf::RenderWindow* getRenderWindow();
     void setRenderWindow(sf::RenderWindow* renderWindow);
+
+    Camera* getCamera();
+    void setCamera(Camera* camera);
 
     void free();
 };

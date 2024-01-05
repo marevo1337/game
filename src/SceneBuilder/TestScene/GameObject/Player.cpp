@@ -27,6 +27,8 @@ void Player::start()
 
 void Player::update()
 {
+    prevPlayerPosition = playerPoint->getPosition();
+
     playerMovement();
     mouseMovement();
 
@@ -98,5 +100,5 @@ float Player::getRotateAngle()
 
 void Player::onCollisionDetect(GameObject* gameObject)
 {
-    std::cout << "Player collision detect" << std::endl;
+    playerPoint->setPosition(prevPlayerPosition);
 }

@@ -1,7 +1,6 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <iostream>
 #include "../../../GameObject/GameObject.hpp"
 #include "../../../ElementContainer.hpp"
 #include "../../../Component/Collider.hpp"

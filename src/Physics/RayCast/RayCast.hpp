@@ -2,7 +2,6 @@
 
 #include <cmath>
 #include <SFML/Graphics.hpp>
-#include <iostream>
 #include "RayCastHit.hpp"
 #include "../../ElementContainer.hpp"
 #include "../../Component/Tag.hpp"

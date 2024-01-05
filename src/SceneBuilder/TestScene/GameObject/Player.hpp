@@ -1,7 +1,6 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <iostream>
 #include "../../../GameObject/GameObject.hpp"
 #include "../../../ElementContainer.hpp"
 #include "../../../Physics/RayCast/RayCast.hpp"
@@ -14,6 +13,7 @@ private:
     const float mouseSensitive = 0.1f;
 
     sf::Vector2i prevMousePosition;
+    sf::Vector2f prevPlayerPosition;
 
     sf::CircleShape* playerPoint = nullptr;
 

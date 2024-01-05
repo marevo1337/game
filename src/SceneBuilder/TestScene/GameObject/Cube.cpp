@@ -34,7 +34,10 @@ void Cube::start()
 
 void Cube::update()
 {
-    ElementContainer::get().getRenderWindow()->draw(*cube);
+    if (ElementContainer::get().getGameMode() == GameMode::Composite)
+    {
+        ElementContainer::get().getRenderWindow()->draw(*cube);
+    }
 }
 
 sf::Vector2f Cube::getPosition()

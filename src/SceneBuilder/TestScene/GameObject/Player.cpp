@@ -33,7 +33,11 @@ void Player::update()
     mouseMovement();
 
     ElementContainer::get().getCamera()->look(getPosition(), getRotateAngle());
-    ElementContainer::get().getRenderWindow()->draw(*playerPoint);
+
+    if (ElementContainer::get().getGameMode() == GameMode::Composite)
+    {
+        ElementContainer::get().getRenderWindow()->draw(*playerPoint);
+    }
 
     collider->setFloatRect(playerPoint->getGlobalBounds());
 }

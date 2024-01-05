@@ -4,9 +4,10 @@ GameObject::~GameObject()
 {
     for (auto component : componentsTable)
     {
-        if (component.second)
+        if (component.second != nullptr)
         {
             delete component.second;
+            component.second = nullptr;
         }
     }
 }

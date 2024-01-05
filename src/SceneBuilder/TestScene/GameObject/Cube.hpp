@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include "../../../GameObject/GameObject.hpp"
 #include "../../../ElementContainer.hpp"
 #include "../../../Component/Collider.hpp"
@@ -16,6 +17,7 @@ private:
     sf::RectangleShape* cube;
 
     Collider* collider;
+    Collider* rayCather;
 public:
     explicit Cube(float width, sf::Vector2f startPosition, float startRotateAngle);
     virtual ~Cube();

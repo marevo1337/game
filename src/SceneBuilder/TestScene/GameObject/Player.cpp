@@ -19,6 +19,10 @@ void Player::start()
     playerPoint->setOrigin(radius, radius);
 
     prevMousePosition = sf::Mouse::getPosition(*ElementContainer::get().getRenderWindow());
+
+    collider = new Collider();
+    collider->setFloatRect(playerPoint->getGlobalBounds());
+    registerComponent(Tag::Collider, collider);
 }
 
 void Player::update()
@@ -28,6 +32,8 @@ void Player::update()
 
     ElementContainer::get().getCamera()->look(getPosition(), getRotateAngle());
     ElementContainer::get().getRenderWindow()->draw(*playerPoint);
+
+    collider->setFloatRect(playerPoint->getGlobalBounds());
 }
 
 void Player::playerMovement()
@@ -88,4 +94,9 @@ sf::Vector2f Player::getPosition()
 float Player::getRotateAngle()
 {
     return playerPoint->getRotation();
+}
+
+void Player::onCollisionDetect(GameObject* gameObject)
+{
+    std::cout << "Player collision detect" << std::endl;
 }

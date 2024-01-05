@@ -20,4 +20,6 @@ public:
     virtual float getRotateAngle() = 0;
 
     BaseComponent* findComponentByTag(const std::string& tag);
+
+    virtual void onCollisionDetect(GameObject* gameObject) {};
 };

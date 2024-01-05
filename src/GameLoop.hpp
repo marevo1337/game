@@ -4,6 +4,7 @@
 #include "Scene/SceneController.hpp"
 #include "SceneBuilder/TestScene/TestSceneBuilder.hpp"
 #include "ElementContainer.hpp"
+#include "Physics/Physics.hpp"
 
 class GameLoop
 {

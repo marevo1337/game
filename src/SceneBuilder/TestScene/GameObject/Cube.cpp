@@ -25,7 +25,11 @@ void Cube::start()
     collider = new Collider();
     collider->setFloatRect(cube->getGlobalBounds());
 
+    rayCather = new Collider();
+    rayCather->setFloatRect(cube->getGlobalBounds());
+
     registerComponent(Tag::Collider, collider);
+    registerComponent(Tag::RayCather, rayCather);
 }
 
 void Cube::update()
@@ -42,4 +46,3 @@ float Cube::getRotateAngle()
 {
     return cube->getRotation();
 }
-

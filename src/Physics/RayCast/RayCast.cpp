@@ -26,7 +26,7 @@ RayCastHit RayCast::cast(
 
         for (auto gameObject : gameObjects)
         {
-            BaseComponent* component = gameObject->findComponentByTag(Tag::Collider);
+            BaseComponent* component = gameObject->findComponentByTag(Tag::RayCather);
             if (component != nullptr)
             {
                 Collider* collider = dynamic_cast<Collider*>(component);

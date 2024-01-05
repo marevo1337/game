@@ -1,10 +1,11 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include "../../../GameObject/GameObject.hpp"
 #include "../../../ElementContainer.hpp"
 #include "../../../Physics/RayCast/RayCast.hpp"
-#include "../../../Camera/Camera.hpp"
+#include "../../../Component/Collider.hpp"
 
 class Player : public GameObject
 {
@@ -16,7 +17,7 @@ private:
 
     sf::CircleShape* playerPoint = nullptr;
 
-    Camera* camera = nullptr;
+    Collider* collider;
 
     void playerMovement();
     void mouseMovement();
@@ -28,4 +29,6 @@ public:
 
     sf::Vector2f getPosition() override;
     float getRotateAngle() override;
+
+    void onCollisionDetect(GameObject* gameObject) override;
 };

@@ -43,6 +43,8 @@ add_executable(CMakeSFMLProject
         src/Physics/Collision/Collision.hpp
         src/Component/Collider.cpp
         src/Component/Collider.hpp
+        src/Physics/Physics.cpp
+        src/Physics/Physics.hpp
 )
 target_link_libraries(CMakeSFMLProject PRIVATE sfml-graphics)
 target_compile_features(CMakeSFMLProject PRIVATE cxx_std_17)

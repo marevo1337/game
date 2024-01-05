@@ -23,6 +23,7 @@ void GameLoop::run()
 
         ElementContainer::get().getRenderWindow()->clear();
         ElementContainer::get().getSceneController()->update();
+        Physics::sceneUpdateCollision();
         ElementContainer::get().getRenderWindow()->display();
     }
 }

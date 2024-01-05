@@ -62,6 +62,8 @@ void Player::playerMovement()
 
         playerPoint->move(x, y);
     }
+
+    ElementContainer::get().getDebugInfo()->setPlayerPosition(playerPoint->getPosition());
 }
 
 void Player::mouseMovement()
@@ -86,6 +88,8 @@ void Player::mouseMovement()
     }
 
     prevMousePosition = localPosition;
+
+    ElementContainer::get().getDebugInfo()->setPlayerRotation(playerPoint->getRotation());
 }
 
 sf::Vector2f Player::getPosition()

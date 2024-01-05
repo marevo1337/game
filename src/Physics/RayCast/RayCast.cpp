@@ -17,12 +17,7 @@ RayCastHit RayCast::cast(
         endPosition.x = startPoint.x + i * sin(angle);
         endPosition.y = startPoint.y + i * cos(angle);
 
-        sf::Vertex line[] =
-        {
-            sf::Vertex(startPoint),
-            sf::Vertex(endPosition)
-        };
-        ElementContainer::get().getRenderWindow()->draw(line, 2, sf::Lines);
+        ElementContainer::get().getDebugInfo()->drawLine(startPoint, endPosition);
 
         for (auto gameObject : gameObjects)
         {

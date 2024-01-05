@@ -19,11 +19,31 @@ void GameLoop::run()
             {
                 ElementContainer::get().getRenderWindow()->close();
             }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::O))
+            {
+                ElementContainer::get().setDebugEnable(true);
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+            {
+                ElementContainer::get().setDebugEnable(false);
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::K))
+            {
+                ElementContainer::get().setGameMode(GameMode::Composite);
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+            {
+                ElementContainer::get().setGameMode(GameMode::Perspective);
+            }
         }
 
         ElementContainer::get().getRenderWindow()->clear();
         ElementContainer::get().getSceneController()->update();
         Physics::sceneUpdateCollision();
+
+        ElementContainer::get().getDebugInfo()->setGameMode(ElementContainer::get().getGameMode());
+        ElementContainer::get().getDebugInfo()->draw();
+
         ElementContainer::get().getRenderWindow()->display();
     }
 }

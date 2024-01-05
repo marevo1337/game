@@ -7,6 +7,7 @@ Application::Application()
 
     ElementContainer::get().setRenderWindow(renderWindow);
     ElementContainer::get().setCamera(new Camera());
+    ElementContainer::get().setDebugInfo(new DebugInfo());
 }
 
 Application::~Application()

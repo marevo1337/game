@@ -45,6 +45,10 @@ add_executable(CMakeSFMLProject
         src/Component/Collider.hpp
         src/Physics/Physics.cpp
         src/Physics/Physics.hpp
+        src/Debug/DebugInfo.cpp
+        src/Debug/DebugInfo.hpp
+        src/GameMode.cpp
+        src/GameMode.hpp
 )
 target_link_libraries(CMakeSFMLProject PRIVATE sfml-graphics)
 target_compile_features(CMakeSFMLProject PRIVATE cxx_std_17)

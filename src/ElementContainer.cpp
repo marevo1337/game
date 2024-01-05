@@ -1,5 +1,15 @@
 #include "ElementContainer.hpp"
 
+bool ElementContainer::isDebugEnable()
+{
+    return debugEnable;
+}
+
+void ElementContainer::setDebugEnable(bool debugEnable)
+{
+    this->debugEnable = debugEnable;
+}
+
 SceneController* ElementContainer::getSceneController()
 {
     return sceneController;
@@ -30,6 +40,26 @@ void ElementContainer::setCamera(Camera *camera)
     this->camera = camera;
 }
 
+DebugInfo* ElementContainer::getDebugInfo()
+{
+    return debugInfo;
+}
+
+void ElementContainer::setDebugInfo(DebugInfo* debugInfo)
+{
+    this->debugInfo = debugInfo;
+}
+
+int ElementContainer::getGameMode()
+{
+    return gameMode;
+}
+
+void ElementContainer::setGameMode(int gameMode)
+{
+    this->gameMode = gameMode;
+}
+
 void ElementContainer::free()
 {
     if (sceneController)
@@ -45,5 +75,10 @@ void ElementContainer::free()
     if (camera)
     {
         delete camera;
+    }
+
+    if (debugInfo)
+    {
+        delete debugInfo;
     }
 }

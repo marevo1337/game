@@ -32,7 +32,7 @@ RayCastHit RayCast::cast(
                 Collider* collider = dynamic_cast<Collider*>(component);
                 if(Collision::detect(*collider, endPosition))
                 {
-                    // ...
+                    return RayCastHit(i, gameObject);
                 }
             }
         }

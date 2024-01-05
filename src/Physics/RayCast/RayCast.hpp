@@ -10,9 +10,11 @@
 class RayCast
 {
 public:
+    static const int defaultDistance = 200;
+
     static RayCastHit cast(
         float angle,
         const sf::Vector2f startPoint,
-        float distance = 150
+        float distance = defaultDistance
     );
 };

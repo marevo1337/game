@@ -1,10 +1,11 @@
 #include "Cube.hpp"
 
-Cube::Cube(float width, sf::Vector2f startPosition, float startRotateAngle)
+Cube::Cube(float width, sf::Vector2f startPosition, float startRotateAngle, sf::Color color)
 {
     this->width = width;
     this->startPosition = startPosition;
     this->startRotateAngle = startRotateAngle;
+    this->color = color;
 }
 
 Cube::~Cube()
@@ -18,7 +19,7 @@ Cube::~Cube()
 void Cube::start()
 {
     cube = new sf::RectangleShape(sf::Vector2f(width, width));
-    cube->setFillColor(sf::Color::Blue);
+    cube->setFillColor(color);
     cube->setPosition(startPosition);
     cube->setRotation(startRotateAngle);
 

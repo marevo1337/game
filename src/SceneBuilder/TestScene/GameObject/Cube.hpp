@@ -12,13 +12,14 @@ private:
     float width = 10.0f;
     sf::Vector2f startPosition;
     float startRotateAngle;
+    sf::Color color;
 
     sf::RectangleShape* cube;
 
     Collider* collider;
     Collider* rayCather;
 public:
-    explicit Cube(float width, sf::Vector2f startPosition, float startRotateAngle);
+    explicit Cube(float width, sf::Vector2f startPosition, float startRotateAngle, sf::Color color);
     virtual ~Cube();
 
     void start() override;

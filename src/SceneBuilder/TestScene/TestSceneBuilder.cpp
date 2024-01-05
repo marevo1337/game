@@ -7,10 +7,10 @@ Scene *TestSceneBuilder::build()
     GameObject* player = new Player();
     scene->attachGameObject(player);
 
-    GameObject* cube = new Cube(30.0f, sf::Vector2f(400.0f, 300.0f), 0);
+    GameObject* cube = new Cube(30.0f, sf::Vector2f(400.0f, 300.0f), 0, sf::Color::Blue);
     scene->attachGameObject(cube);
 
-    GameObject* cube2 = new Cube(30.0f, sf::Vector2f(450.0f, 350.0f), 0);
+    GameObject* cube2 = new Cube(30.0f, sf::Vector2f(450.0f, 350.0f), 0, sf::Color::Green);
     scene->attachGameObject(cube2);
 
     return scene;

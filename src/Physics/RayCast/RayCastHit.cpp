@@ -1,17 +1,17 @@
 #include "RayCastHit.hpp"
 
-RayCastHit::RayCastHit(float delta, GameObject *gameObject)
+RayCastHit::RayCastHit(int distance, GameObject *gameObject)
 {
-    this->delta = delta;
+    this->distance = distance;
     this->gameObject = gameObject;
 }
 
-float RayCastHit::getDelta()
+int RayCastHit::getDistance()
 {
-    return delta;
+    return distance;
 }
 
-GameObject *RayCastHit::getGameObject()
+GameObject* RayCastHit::getGameObject()
 {
     return gameObject;
 }

@@ -10,7 +10,7 @@ class Player : public GameObject
 {
 private:
     const float speed = 3.0f;
-    const float mouseSensitive = 0.1f;
+    const float mouseSensitive = 0.05f;
 
     sf::Vector2i prevMousePosition;
     sf::Vector2f prevPlayerPosition;
@@ -29,6 +29,7 @@ public:
 
     sf::Vector2f getPosition() override;
     float getRotateAngle() override;
+    sf::Color getColor() override;
 
     void onCollisionDetect(GameObject* gameObject) override;
 };

@@ -5,12 +5,12 @@
 class RayCastHit
 {
 private:
-    float delta = 0;
+    int distance = 0;
     GameObject* gameObject = nullptr;
 public:
-    RayCastHit(float delta, GameObject* gameObject);
+    RayCastHit(int distance, GameObject* gameObject);
     virtual ~RayCastHit() {};
 
-    float getDelta();
+    int getDistance();
     GameObject* getGameObject();
 };

@@ -49,3 +49,8 @@ float Cube::getRotateAngle()
 {
     return cube->getRotation();
 }
+
+sf::Color Cube::getColor()
+{
+    return cube->getFillColor();
+}

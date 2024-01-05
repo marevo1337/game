@@ -110,3 +110,8 @@ void Player::onCollisionDetect(GameObject* gameObject)
 {
     playerPoint->setPosition(prevPlayerPosition);
 }
+
+sf::Color Player::getColor()
+{
+    return playerPoint->getFillColor();
+}

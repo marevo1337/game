@@ -26,4 +26,5 @@ public:
 
     sf::Vector2f getPosition() override;
     float getRotateAngle() override;
+    sf::Color getColor() override;
 };

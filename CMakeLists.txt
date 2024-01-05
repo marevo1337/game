@@ -49,6 +49,10 @@ add_executable(CMakeSFMLProject
         src/Debug/DebugInfo.hpp
         src/GameMode.cpp
         src/GameMode.hpp
+        src/SceneBuilder/Common/Rectangle.cpp
+        src/SceneBuilder/Common/Rectangle.hpp
+        src/Camera/PerspectiveMode.cpp
+        src/Camera/PerspectiveMode.hpp
 )
 target_link_libraries(CMakeSFMLProject PRIVATE sfml-graphics)
 target_compile_features(CMakeSFMLProject PRIVATE cxx_std_17)

@@ -18,6 +18,7 @@ public:
 
     virtual sf::Vector2f getPosition() = 0;
     virtual float getRotateAngle() = 0;
+    virtual sf::Color getColor() = 0;
 
     BaseComponent* findComponentByTag(const std::string& tag);
 
